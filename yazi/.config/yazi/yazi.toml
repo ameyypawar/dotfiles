@@ -1,0 +1,111 @@
+# Yazi config — Amey
+# Yazi v25+ uses `url = "<glob>"` (not `name = "<glob>"`) in rules.
+# 1. Force text/code files to open in $EDITOR (nvim), not macOS default app.
+# 2. Force the `code` previewer (uses bat) by file extension, because
+#    mime-detection sometimes misidentifies markdown (long lines → "c program text").
+# Quit + relaunch yazi after editing this file.
+
+# --- Previewer rules — extension wins over mime mis-detection ---
+[plugin]
+prepend_previewers = [
+  { url = "*.md",        run = "code" },
+  { url = "*.markdown",  run = "code" },
+  { url = "*.txt",       run = "code" },
+  { url = "*.log",       run = "code" },
+  { url = "*.ts",        run = "code" },
+  { url = "*.tsx",       run = "code" },
+  { url = "*.js",        run = "code" },
+  { url = "*.mjs",       run = "code" },
+  { url = "*.jsx",       run = "code" },
+  { url = "*.json",      run = "code" },
+  { url = "*.jsonc",     run = "code" },
+  { url = "*.lua",       run = "code" },
+  { url = "*.py",        run = "code" },
+  { url = "*.rs",        run = "code" },
+  { url = "*.go",        run = "code" },
+  { url = "*.html",      run = "code" },
+  { url = "*.css",       run = "code" },
+  { url = "*.scss",      run = "code" },
+  { url = "*.toml",      run = "code" },
+  { url = "*.yaml",      run = "code" },
+  { url = "*.yml",       run = "code" },
+  { url = "*.sh",        run = "code" },
+  { url = "*.zsh",       run = "code" },
+  { url = "*.bash",      run = "code" },
+  { url = "*.sql",       run = "code" },
+  { url = "*.env",       run = "code" },
+  { url = ".env*",       run = "code" },
+  { url = "*.gitignore", run = "code" },
+  { url = ".gitignore",  run = "code" },
+  { url = "Dockerfile",  run = "code" },
+  { url = "Makefile",    run = "code" },
+]
+
+# --- Opener routing — code/text files go to $EDITOR (nvim) ---
+[open]
+prepend_rules = [
+  # Markdown / docs
+  { url = "*.md",        use = "edit" },
+  { url = "*.markdown",  use = "edit" },
+  { url = "*.txt",       use = "edit" },
+  { url = "*.rst",       use = "edit" },
+
+  # Code — JS / TS / web
+  { url = "*.js",        use = "edit" },
+  { url = "*.mjs",       use = "edit" },
+  { url = "*.cjs",       use = "edit" },
+  { url = "*.ts",        use = "edit" },
+  { url = "*.tsx",       use = "edit" },
+  { url = "*.jsx",       use = "edit" },
+  { url = "*.html",      use = "edit" },
+  { url = "*.css",       use = "edit" },
+  { url = "*.scss",      use = "edit" },
+  { url = "*.vue",       use = "edit" },
+  { url = "*.svelte",    use = "edit" },
+
+  # Code — other langs
+  { url = "*.lua",       use = "edit" },
+  { url = "*.py",        use = "edit" },
+  { url = "*.rs",        use = "edit" },
+  { url = "*.go",        use = "edit" },
+  { url = "*.c",         use = "edit" },
+  { url = "*.cpp",       use = "edit" },
+  { url = "*.h",         use = "edit" },
+  { url = "*.java",      use = "edit" },
+  { url = "*.rb",        use = "edit" },
+  { url = "*.swift",     use = "edit" },
+
+  # Config / data
+  { url = "*.json",      use = "edit" },
+  { url = "*.jsonc",     use = "edit" },
+  { url = "*.toml",      use = "edit" },
+  { url = "*.yaml",      use = "edit" },
+  { url = "*.yml",       use = "edit" },
+  { url = "*.xml",       use = "edit" },
+  { url = "*.ini",       use = "edit" },
+  { url = "*.conf",      use = "edit" },
+  { url = "*.env",       use = "edit" },
+  { url = ".env*",       use = "edit" },
+  { url = ".gitignore",  use = "edit" },
+  { url = ".gitconfig",  use = "edit" },
+
+  # Shell / scripts / build
+  { url = "*.sh",        use = "edit" },
+  { url = "*.zsh",       use = "edit" },
+  { url = "*.bash",      use = "edit" },
+  { url = "*.fish",      use = "edit" },
+  { url = ".zshrc",      use = "edit" },
+  { url = ".bashrc",     use = "edit" },
+  { url = ".zprofile",   use = "edit" },
+  { url = "Makefile",    use = "edit" },
+  { url = "Dockerfile",  use = "edit" },
+
+  # SQL / data
+  { url = "*.sql",       use = "edit" },
+  { url = "*.csv",       use = "edit" },
+  { url = "*.tsv",       use = "edit" },
+  { url = "*.log",       use = "edit" },
+
+  # Mime catch-all for anything detected as text
+  { mime = "text/*",     use = "edit" },
+]

@@ -1,0 +1,88 @@
+# ============================================================
+# Ghostty config — Amey
+# Reload after edit: cmd+shift+,
+# Show all options:  ghostty +show-config --default
+# ============================================================
+
+# --- Theme ---
+theme = Catppuccin Mocha
+# Override only the base background — keep catppuccin's syntax/foreground colors.
+# #000000 is OLED pitch black — full black, max contrast, zero hue.
+# Per-key overrides win over the theme's defaults (last-write-wins in Ghostty).
+background = #000000
+
+# --- Font ---
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 19
+
+# --- Appearance (glass / blur) ---
+# Opacity 1.0 — wallpaper bleed at <1.0 introduces a blue cast (from macOS wallpapers)
+# that tints whatever bg sits underneath, defeating the "neutral grey" goal.
+background-opacity = 1.0
+background-blur-radius = 20
+
+# --- Window ---
+window-decoration = true
+window-padding-x = 8
+window-padding-y = 8
+macos-titlebar-style = tabs
+window-save-state = always
+
+# --- Cursor ---
+cursor-style = block
+cursor-style-blink = false
+
+# --- Behavior ---
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+confirm-close-surface = false
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# --- Scrolling ---
+# mouse-scroll-multiplier takes precision (trackpad) + discrete (wheel) separately.
+# precision: lower = smoother on trackpad. Default 1, going to 0.5.
+# discrete:  lower = fewer lines per wheel-click. Default 3, going to 2.
+mouse-scroll-multiplier = precision:0.5,discrete:2
+
+# --- macOS key behavior ---
+macos-option-as-alt = true
+
+# --- Custom keybinds ---
+# shift+enter sends LF (0x0A) instead of CR (0x0D) so apps that distinguish
+# them can treat it as "newline, don't submit". Works in Claude Code out of
+# the box (default chat:newline is bound to ctrl+j which is also LF).
+# In zsh/bash, you may need a shell rebind to make LF insert a newline
+# instead of submitting — see notes below.
+keybind = shift+enter=text:\n
+
+# ============================================================
+# Default keybinds (no override needed — listed for memory)
+# ============================================================
+#
+# SPLITS (panes inside one tab)
+#   cmd+d              split right (vertical)
+#   cmd+shift+d        split down (horizontal)
+#   cmd+w              close current split/tab
+#   cmd+shift+enter    toggle zoom on focused split
+#   cmd+[ / cmd+]      cycle splits
+#   cmd+opt+↑↓←→      focus split in direction
+#   cmd+ctrl+↑↓←→     resize split in direction
+#
+# TABS
+#   cmd+t              new tab
+#   cmd+shift+[ / ]    previous / next tab
+#   cmd+1..9           jump to tab N
+#
+# WINDOW
+#   cmd+n              new window
+#   cmd+shift+n        new window in current dir
+#   cmd+shift+,        reload this config (without restart)
+#   cmd+,              open this config in $EDITOR
+#   cmd+ctrl+f         toggle fullscreen
+#
+# TEXT / SCROLL
+#   cmd+c / cmd+v      copy / paste
+#   cmd+f              search
+#   cmd+k              clear screen + scrollback
+#   shift+pgup/pgdn    scroll

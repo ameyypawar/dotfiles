@@ -1,0 +1,8 @@
+# Yazi keymap — Amey
+# Section is [mgr] in v25+ (was [manager] before — silently ignored if wrong).
+# Run `~` or F1 inside yazi to see all bindings.
+
+[[mgr.prepend_keymap]]
+on   = "C"
+run  = '''shell 'pbcopy < "$1"' --block'''
+desc = "Copy hovered file's contents to macOS clipboard"
