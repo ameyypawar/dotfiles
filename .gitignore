@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+
+# Editor swap/backup
+*.swp
+*.swo
+*.bak
+*~
+
+# Neovim plugin state (managed locally, not committed)
+nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/nvim-pack-lock.json
+nvim/.config/nvim/plugin/
+nvim/.config/nvim/.netrwhist
+
+# Tmux plugin install state
+tmux/.tmux/
+
+# Local atuin DB (if it ever leaks in)
+**/atuin/history.db
+**/atuin/session
+**/atuin/key
+
+# Machine-local overrides — see README §Customization
+.extra
+extra/.extra
+extra/.extra.local
+
+# Local git identity (created by user post-install)
+git/.gitconfig.local
+
+# Temporary build artifacts
+*.png.tmp
