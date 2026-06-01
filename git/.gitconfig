@@ -1,0 +1,34 @@
+# Personal identity lives in ~/.gitconfig.local (gitignored, included below).
+# After running install.sh, create it with:
+#   git config -f ~/.gitconfig.local user.email "you@example.com"
+#   git config -f ~/.gitconfig.local user.name  "Your Name"
+
+[include]
+	path = ~/.gitconfig.local
+
+[core]
+	editor = nvim
+	pager = delta
+	excludesfile = ~/.gitignore_global
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+	syntax-theme = Catppuccin Mocha
+
+[alias]
+	dft = !GIT_EXTERNAL_DIFF=difft git diff
+	dfts = !GIT_EXTERNAL_DIFF=difft git show
+	dftl = !GIT_EXTERNAL_DIFF=difft git log --ext-diff -p
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true

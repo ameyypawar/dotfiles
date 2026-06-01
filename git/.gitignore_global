@@ -1,0 +1,16 @@
+# Global git ignore — applied to every repo on this machine.
+# Linked in via core.excludesfile in .gitconfig.
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor swap/backup
+*.swp
+*.swo
+*.bak
+*~
+
+# Direnv
+.envrc.cache
