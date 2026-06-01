@@ -51,7 +51,17 @@ for pkg in "${STOW_PACKAGES[@]}"; do
 done
 
 # ------------------------------------------------------------
-# 4. Tmux Plugin Manager (TPM) — install BEFORE first tmux start
+# 4. gh CLI extensions
+# ------------------------------------------------------------
+if command -v gh >/dev/null 2>&1; then
+  if ! gh extension list 2>/dev/null | grep -q 'dlvhdr/gh-dash'; then
+    say "Installing gh-dash extension..."
+    gh extension install dlvhdr/gh-dash || warn "gh-dash install failed (gh auth required) — re-run after 'gh auth login'"
+  fi
+fi
+
+# ------------------------------------------------------------
+# 5. Tmux Plugin Manager (TPM) — install BEFORE first tmux start
 # ------------------------------------------------------------
 TPM_DIR="$HOME/.tmux/plugins/tpm"
 if [ ! -d "$TPM_DIR" ]; then
@@ -63,7 +73,7 @@ say "Installing tmux plugins via TPM CLI..."
 "$TPM_DIR/bin/install_plugins"
 
 # ------------------------------------------------------------
-# 5. Bat catppuccin theme (delta uses bat's themes)
+# 6. Bat catppuccin theme (delta uses bat's themes)
 # ------------------------------------------------------------
 if command -v bat >/dev/null 2>&1; then
   BAT_THEMES="$(bat --config-dir)/themes"
@@ -78,7 +88,7 @@ if command -v bat >/dev/null 2>&1; then
 fi
 
 # ------------------------------------------------------------
-# 6. Next steps
+# 7. Next steps
 # ------------------------------------------------------------
 cat <<EOF
 

@@ -61,4 +61,6 @@ cask "font-jetbrains-mono-nerd-font"    # required for icons in eza, starship, t
 # ============================================================
 # tap "max-sixty/worktrunk"
 # brew "worktrunk"                      # git worktree manager
-# brew "gh-dash" (install as gh extension: `gh extension install dlvhdr/gh-dash`)
+#
+# Note: gh-dash is a gh CLI extension, not a Homebrew formula.
+# install.sh runs `gh extension install dlvhdr/gh-dash` for you after gh auth.

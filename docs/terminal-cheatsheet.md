@@ -48,8 +48,8 @@ Press prefix, **release**, then press the next key. Don't chord all three.
 | Detach from session (leave it running) | `prefix` then `d` |
 | Reattach last session | `tmux a` |
 | List all sessions | `tmux ls` |
-| New named session | `tmux new -s tubio` |
-| Attach to specific session | `tmux a -t tubio` |
+| New named session | `tmux new -s myproject` |
+| Attach to specific session | `tmux a -t myproject` |
 
 ### If something breaks
 
@@ -77,7 +77,7 @@ wt list                         # show all my worktrees and their state
 wt switch feat/themes           # jump to that worktree
 wt switch main                  # jump back to main
 
-wt merge                        # squash + commit (auto msg via Claude) +
+wt merge                        # squash + commit (auto-generated msg) +
                                 # merge to main + delete branch + cd back
 
 wt remove feat/themes           # nuke a worktree manually if needed
@@ -86,7 +86,7 @@ wt remove feat/themes           # nuke a worktree manually if needed
 ### What `wt merge` does for me (so I don't have to)
 
 1. Stages everything I changed
-2. Generates a commit message using Claude
+2. Generates a commit message via the configured generator
 3. Stashes anything dirty on main
 4. Merges my worktree into main
 5. Restores the stash on main
@@ -128,7 +128,7 @@ These are the muscle-memory shortcuts that make terminal life fast.
 Instead of `cd ~/Projects/my-repo`, just:
 
 ```bash
-z tubio        # jumps to tubio (it learns paths I visit)
+z myproject    # jumps to a learned path (zoxide remembers where you go)
 zi             # interactive picker via fzf
 ```
 
@@ -221,7 +221,7 @@ If I'm about to do anything I'm unsure about, **tag first**. Free insurance.
 Look at my prompt:
 
 ```
-~/Projects/tubio  on  main [!?]  with 󰎙 v18.20.0
+~/Projects/myrepo  on  main [!?]  with 󰎙 v18.20.0
 ❯
 ```
 
@@ -271,7 +271,6 @@ I default to tmux 99% of the time.
 | `~/.config/ghostty/config` | Ghostty terminal — theme, font, keybinds reference |
 | `~/.tmux.conf` | tmux config — prefix, splits, plugins |
 | `~/.config/starship.toml` | Prompt theme (catppuccin-powerline preset) |
-| `~/.claude/settings.json` | Claude Code config — model, plugins, statusline |
 | `~/.tmux/plugins/` | Tmux plugins installed by TPM |
 
 If I want to change something, edit the right file, then reload:
@@ -291,7 +290,7 @@ If I want to change something, edit the right file, then reload:
 3. **"Catppuccin theme isn't loaded in tmux"** → I forgot `prefix I` to install plugins. Run it.
 4. **"Ctrl+b does nothing"** → Either I'm not in tmux (`echo $TMUX`), or my terminal is eating the keystroke (use Ghostty, not Warp).
 5. **"`wt switch` says not a worktree repo"** → Worktrees need git. `cd` into a real git repo first.
-6. **"Editor opens for git commit but I can't save"** → Editor is `cursor --wait`. Save in Cursor with cmd+s, then close the file tab. Git sees it saved.
+6. **"Editor opens for git commit and I'm stuck"** → Editor is `nvim`. Press `i` to insert, type the message, `Esc`, then `:wq` Enter.
 
 ---
 
@@ -301,8 +300,8 @@ If I want to change something, edit the right file, then reload:
 2. **Force myself to use `Ctrl+R`** for command history instead of arrow keys. Atuin's fuzzy search is faster.
 3. **Start a real merge conflict on purpose** in a scratch repo, resolve it by hand. This is the senior-dev muscle.
 4. **Try `wt switch -c feat/test`** in any repo, make a tiny change, `wt merge`. Feel the magic.
-5. **Read the `wt config plugins claude install`** output once — understand what the plugin does.
-6. **Make a tmux session per project**: `tmux new -s tubio`, `tmux new -s gitfix`. Switch with `tmux a -t <name>`.
+5. **Read `man wt` and `wt --help`** once to learn the worktree workflow.
+6. **Make a tmux session per project**: `tmux new -s projectA`, `tmux new -s projectB`. Switch with `tmux a -t <name>`.
 
 ---
 
