@@ -1,0 +1,29 @@
+# Local machine overrides.
+# Copy this to ~/.extra and fill in machine-specific PATHs and secrets.
+# This file is gitignored — it never reaches a public repo.
+#
+# ~/.zshrc sources ~/.extra at the very end if it exists, so anything you put
+# here wins over the standard config.
+
+# ------------------------------------------------------------
+# Machine-specific PATHs
+# ------------------------------------------------------------
+# Apps that aren't on every machine you use:
+# export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+# export PATH="$HOME/.spicetify:$PATH"
+# export PATH="/opt/some-thing/bin:$PATH"
+
+# ------------------------------------------------------------
+# Secrets / tokens
+# ------------------------------------------------------------
+# Prefer per-project .env files when you can. Use this for genuinely
+# machine-wide credentials only.
+#
+# export OPENAI_API_KEY="..."
+# export ANTHROPIC_API_KEY="..."
+# export GITHUB_TOKEN="..."
+
+# ------------------------------------------------------------
+# Local-only aliases
+# ------------------------------------------------------------
+# alias work='cd ~/Projects/employer-internal-thing'
