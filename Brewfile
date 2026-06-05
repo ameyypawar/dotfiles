@@ -19,6 +19,7 @@ brew "lazygit"          # TUI git client
 # Terminal multiplexer + shell prompt
 # ============================================================
 brew "tmux"
+brew "sesh"             # tmux session picker over zoxide dirs + configs
 brew "starship"
 
 # ============================================================

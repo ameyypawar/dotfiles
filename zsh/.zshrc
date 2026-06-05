@@ -55,5 +55,28 @@ function y() {
   rm -f -- "$tmp"
 }
 
+# --- tmux session shortcuts ---
+alias tl='tmux list-sessions 2>/dev/null || echo "no sessions"'
+alias tn='tmux new-session -s'            # tn myproject
+alias ta='tmux attach-session -t'         # ta myproject
+alias tk='tmux kill-session -t'           # tk myproject
+alias tr='tmux rename-session -t'         # tr oldname newname
+# Smart attach-or-create — session named after CWD basename
+alias t='tmux new-session -A -s "$(basename "$PWD" | tr -d .)"'
+# sesh: fuzzy-pick across running sessions + zoxide dirs + configs
+alias sc='sesh connect'
+
+# ts — fuzzy session switcher, works inside AND outside tmux
+ts() {
+  local session
+  session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null \
+    | fzf --reverse --header 'switch session' \
+          --preview 'tmux capture-pane -pt {}')
+  [[ -z "$session" ]] && return
+  if [[ -n "$TMUX" ]]; then tmux switch-client -t "$session"
+  else                     tmux attach-session  -t "$session"
+  fi
+}
+
 # --- local machine overrides (gitignored — see extra/.extra.example) ---
 [ -f "$HOME/.extra" ] && source "$HOME/.extra"
