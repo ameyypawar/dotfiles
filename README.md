@@ -165,10 +165,11 @@ dotfiles/
 ├── nvim/               → ~/.config/nvim/  (kickstart fork)
 ├── extra/              .extra.example template (gitignored when copied to ~/.extra)
 ├── bin/                helper scripts (empty for now)
-├── docs/               cheatsheets
+├── docs/               cheatsheets + runbooks
 │   ├── terminal-cheatsheet.md
 │   ├── nvim-cheatsheet.md
-│   └── delta-difft-notes.md
+│   ├── delta-difft-notes.md
+│   └── setup-remote-vps.md
 └── images/             screenshots
 ```
 
@@ -181,6 +182,7 @@ Each top-level tool folder is a GNU Stow package — the internal `.config/...` 
 - [`docs/terminal-cheatsheet.md`](docs/terminal-cheatsheet.md) — daily-driver shortcuts for tmux, worktrunk, fzf, lazygit, git, starship, Ghostty
 - [`docs/nvim-cheatsheet.md`](docs/nvim-cheatsheet.md) — modes, motions, operators, text objects, kickstart leader keymaps, LSP shortcuts, 2-week learning plan
 - [`docs/delta-difft-notes.md`](docs/delta-difft-notes.md) — when to reach for delta vs. semantic diff with difftastic, PR review workflow
+- [`docs/setup-remote-vps.md`](docs/setup-remote-vps.md) — runbook for putting Claude Code on a $5/mo Hetzner VPS so you can drive it from your phone via Remote Control
 
 ---
 
